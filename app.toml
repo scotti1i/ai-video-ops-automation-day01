@@ -1,0 +1,28 @@
+[project]
+day = 1
+slug = "ai-video-operations"
+title = "AI 视频运营流水线"
+industry = "内容运营"
+status = "verified"
+promise = "高频视频运营团队在同一条视频记录里完成 Context、脚本分镜、成片交付、多账号发布、数据回流和一键裂变"
+primary_work_type = "operations"
+source = "抖音评论最高赞需求 + 高频自制视频团队真实流程"
+license = "MIT"
+
+[commands]
+doctor = "uv run video-ops doctor"
+demo = "uv run video-ops demo"
+check = "uv run video-ops check"
+run = "uv run video-ops run"
+
+[proof]
+sample_input = "data/sample/"
+real_evidence = "evidence/"
+local_output = "output/"
+human_decision = "用户只提供或选择业务 Context、补齐外部成片，并发起真实账号发布；脚本分镜、状态推进、数据回流和裂变默认由系统完成"
+
+[release]
+video = "content/video.md"
+local_package = "workspace/releases/day-01-ai-video-operations.zip"
+public_url = ""
+published_at = ""

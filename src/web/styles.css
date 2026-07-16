@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "@fifty/workbench-ui/styles.css";
+/* xyflow 只取 base.css：布局必需样式，不带默认皮肤。皮肤由 v6 色板给。
+   Tailwind v4 下 CSS import 必须在这里，不能在 tsx 里 import。 */
+@import "@xyflow/react/dist/base.css";
+@source "../../node_modules/@fifty/workbench-ui/src";
+@source "../../node_modules/@fifty/workbench-ai/src";
+@source "./";
+
+:root { font-synthesis: none; }
+
+/* 画布：把 xyflow 的默认灰压到 v6 中性层（连线颜色逐条也会覆盖，这里兜底） */
+.react-flow {
+  --xy-edge-stroke-default: var(--border-strong);
+  --xy-handle-background-color-default: transparent;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

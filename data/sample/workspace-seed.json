@@ -1,0 +1,655 @@
+{
+  "version": 3,
+  "workspace": {
+    "id": "workspace-demo",
+    "name": "示例出海内容组",
+    "mode": "demo",
+    "traffic_threshold": 100000,
+    "order_threshold": 20
+  },
+  "account_groups": [
+    {
+      "id": "group-us",
+      "name": "美区品牌账号",
+      "sort_order": 1
+    },
+    {
+      "id": "group-test",
+      "name": "内容矩阵",
+      "sort_order": 2
+    }
+  ],
+  "accounts": [
+    {
+      "id": "account-youtube-main",
+      "group_id": "group-us",
+      "name": "Home Lab 主账号",
+      "handle": "@homelab-studio",
+      "platform": "youtube",
+      "connection_status": "needs_auth",
+      "context": "节奏克制，先给可验证结果；默认英文字幕，内容可中文口播。"
+    },
+    {
+      "id": "account-youtube-howto",
+      "group_id": "group-us",
+      "name": "Home Lab 教程号",
+      "handle": "@homelab-howto",
+      "platform": "youtube",
+      "connection_status": "needs_auth",
+      "context": "教程向，步骤必须可复现，不用夸张承诺。"
+    },
+    {
+      "id": "account-mock-shop",
+      "group_id": "group-test",
+      "name": "Home Lab 美区短视频",
+      "handle": "@homelab-deals",
+      "platform": "mock-social",
+      "connection_status": "mock",
+      "context": "20 到 35 秒，第一镜必须出现问题或结果；允许商品卡。"
+    },
+    {
+      "id": "account-mock-broken",
+      "group_id": "group-test",
+      "name": "Home Lab UGC 号",
+      "handle": "@homelab-ugc",
+      "platform": "mock-social",
+      "connection_status": "disconnected",
+      "context": "真人居家场景，保留生活质感；开头先呈现使用前后的明确差异。"
+    }
+  ],
+  "products": [
+    {
+      "id": "product-blender",
+      "title": "便携榨汁杯",
+      "description": "USB-C 充电的随行榨汁杯，杯体可拆洗。",
+      "selling_points": [
+        "随行杯直接饮用",
+        "杯体可拆洗",
+        "USB-C 充电"
+      ],
+      "url": "https://example.invalid/products/blender"
+    },
+    {
+      "id": "product-groomer",
+      "title": "宠物去浮毛梳",
+      "description": "适合日常梳理浮毛的圆角梳齿工具。",
+      "selling_points": [
+        "圆角梳齿",
+        "一键清毛",
+        "干湿毛可用"
+      ],
+      "url": "https://example.invalid/products/groomer"
+    },
+    {
+      "id": "product-organizer",
+      "title": "桌面理线收纳盒",
+      "description": "隐藏插线板与多余线材的桌面收纳盒。",
+      "selling_points": [
+        "隐藏插线板",
+        "双侧出线",
+        "上盖可放手机"
+      ],
+      "url": "https://example.invalid/products/organizer"
+    }
+  ],
+  "videos": [
+    {
+      "key": "hero",
+      "title": "赶时间的早上，果汁打完直接喝",
+      "goal": "验证前两秒的痛点钩子能不能拉住完播；跑赢基线就按场景继续裂变",
+      "account_ids": [
+        "account-mock-shop",
+        "account-youtube-main"
+      ],
+      "product_id": "product-blender",
+      "state": "published_high",
+      "created_at": "2026-07-10T02:00:00+00:00",
+      "script": {
+        "content": "早上赶时间，果汁还要倒来倒去？\n这个杯子打完直接喝。\n以前打完还要倒进随行杯，多一个杯子要洗，还容易洒。\n食材丢进去，打完拧上盖子，拿着这一杯就出门。\n会不会只是看起来省事？少洗一个杯子是真的。\n去商品页查看这个杯体。"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "俯拍早晨厨房台面，两个杯子和摊开的食材同框",
+            "voiceover": "早上赶时间，果汁还要倒来倒去？",
+            "on_screen_text": "每天多一步",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 3,
+            "visual": "手拿起榨汁杯对准镜头，杯身特写",
+            "voiceover": "这个杯子打完直接喝。",
+            "on_screen_text": "一杯到底",
+            "role": "value"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 6,
+            "visual": "回放旧流程，打完倒进另一个随行杯，水槽里多出一个待洗杯",
+            "voiceover": "以前打完还要倒进随行杯，多一个杯子要洗，还容易洒。",
+            "on_screen_text": "多洗一个杯",
+            "role": "problem"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 6,
+            "visual": "一镜拍完，放食材、按下搅打、拧上杯盖拿起就走",
+            "voiceover": "食材丢进去，打完拧上盖子，拿着这一杯就出门。",
+            "on_screen_text": "拿着就走",
+            "role": "proof"
+          },
+          {
+            "order": 5,
+            "duration_seconds": 4,
+            "visual": "镜头对着水槽里唯一的空杯，停两拍",
+            "voiceover": "会不会只是看起来省事？少洗一个杯子是真的。",
+            "on_screen_text": "省的是真事",
+            "role": "objection"
+          },
+          {
+            "order": 6,
+            "duration_seconds": 3,
+            "visual": "杯子放在门口钥匙旁定格，出现查看详情提示",
+            "voiceover": "去商品页查看这个杯体。",
+            "on_screen_text": "看杯体",
+            "role": "cta"
+          }
+        ]
+      }
+    },
+    {
+      "key": "child-scene",
+      "title": "练完就喝，健身房现场打一杯",
+      "goal": "沿用 hero 的结构只换健身房场景，看健身人群买不买账；等实拍素材",
+      "account_ids": [
+        "account-mock-shop"
+      ],
+      "product_id": "product-blender",
+      "state": "needs_media",
+      "parent_key": "hero",
+      "variation": "人物从通勤上班族换成健身房用户",
+      "batch": "batch-hero",
+      "created_at": "2026-07-13T03:00:00+00:00",
+      "script": {
+        "content": "练完那杯补给，还要回家才能做？\n带到健身房，打完直接喝。\n练完最不想做的事，就是收拾一堆瓶瓶罐罐。\n加料一按，打完这杯当场就喝掉。\n力气都练没了还要洗杯子？就这一个，回家冲一下。\n你练完喝什么，留言聊聊。",
+        "note": "场景裂变初稿，等健身房实拍"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "健身房储物区，包和摇摇杯同框入镜",
+            "voiceover": "练完那杯补给，还要回家才能做？",
+            "on_screen_text": "练完就喝",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 3,
+            "visual": "从包里拿出榨汁杯举到镜头前",
+            "voiceover": "带到健身房，打完直接喝。",
+            "on_screen_text": "带来现场",
+            "role": "value"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 6,
+            "visual": "拍储物柜里摞着的摇摇杯和水瓶",
+            "voiceover": "练完最不想做的事，就是收拾一堆瓶瓶罐罐。",
+            "on_screen_text": "少带一个瓶",
+            "role": "problem"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 6,
+            "visual": "长凳上加料、搅打、当场喝，一镜完成",
+            "voiceover": "加料一按，打完这杯当场就喝掉。",
+            "on_screen_text": "当场开喝",
+            "role": "proof"
+          },
+          {
+            "order": 5,
+            "duration_seconds": 4,
+            "visual": "镜头给到手里唯一的杯子",
+            "voiceover": "力气都练没了还要洗杯子？就这一个，回家冲一下。",
+            "on_screen_text": "只洗这一个",
+            "role": "objection"
+          },
+          {
+            "order": 6,
+            "duration_seconds": 3,
+            "visual": "杯子塞回包侧袋定格，出现留言提示",
+            "voiceover": "你练完喝什么，留言聊聊。",
+            "on_screen_text": "评论区聊",
+            "role": "cta"
+          }
+        ],
+        "note": "场景裂变初稿，等健身房实拍"
+      }
+    },
+    {
+      "key": "child-hook",
+      "title": "开头三秒，直接给你看成品",
+      "goal": "把成品画面挪到开头，验证结果前置的钩子；脚本还没定稿",
+      "account_ids": [
+        "account-youtube-main"
+      ],
+      "product_id": "product-blender",
+      "state": "needs_script",
+      "parent_key": "hero",
+      "variation": "把结果画面移到第一镜",
+      "batch": "batch-hero",
+      "created_at": "2026-07-13T03:10:00+00:00"
+    },
+    {
+      "key": "organizer",
+      "title": "桌面那坨线，一个盒子全藏住",
+      "goal": "同机位前后对比突出隐藏插线板；成片已就绪，排本周发布",
+      "account_ids": [
+        "account-mock-shop"
+      ],
+      "product_id": "product-organizer",
+      "state": "ready",
+      "created_at": "2026-07-12T06:00:00+00:00"
+    },
+    {
+      "key": "ai-tutorial",
+      "title": "做完饭的台面，三步收回原样",
+      "goal": "无商品的流程教学，看教程号受众吃不吃这类选题；等实拍素材",
+      "account_ids": [
+        "account-youtube-howto"
+      ],
+      "state": "needs_media",
+      "created_at": "2026-07-12T08:00:00+00:00",
+      "script": {
+        "content": "做完一顿饭，台面像打过仗？\n三步，收回做饭前的样子。\n小家电归位，线收进盒子，台面顺手一擦。\n同一个机位再看一眼，前后差别自己对。\n先收藏，下顿饭后照着来一遍。",
+        "note": "口播定稿，画面等实拍替换"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "做完饭的台面原样入镜，锅铲调料摊开",
+            "voiceover": "做完一顿饭，台面像打过仗？",
+            "on_screen_text": "先拍原样",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 3,
+            "visual": "手比出三根手指，背景是凌乱台面",
+            "voiceover": "三步，收回做饭前的样子。",
+            "on_screen_text": "就三步",
+            "role": "value"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 7,
+            "visual": "小家电归位、线收进收纳盒、台面一擦，连续拍完",
+            "voiceover": "小家电归位，线收进盒子，台面顺手一擦。",
+            "on_screen_text": "一步接一步",
+            "role": "proof"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 7,
+            "visual": "同机位拍收完的台面，和开头形成对照",
+            "voiceover": "同一个机位再看一眼，前后差别自己对。",
+            "on_screen_text": "收完的样子",
+            "role": "proof"
+          },
+          {
+            "order": 5,
+            "duration_seconds": 4,
+            "visual": "台面定格，出现收藏提示",
+            "voiceover": "先收藏，下顿饭后照着来一遍。",
+            "on_screen_text": "收藏试一次",
+            "role": "cta"
+          }
+        ],
+        "note": "口播定稿，画面等实拍替换"
+      }
+    },
+    {
+      "key": "groomer-fail",
+      "title": "换季的猫能梳下多少毛，拍给你看",
+      "goal": "同一只长毛猫三分钟前后对比；上次发布卡在账号断连，重连后原样重发",
+      "account_ids": [
+        "account-mock-broken"
+      ],
+      "product_id": "product-groomer",
+      "state": "failed",
+      "created_at": "2026-07-11T09:00:00+00:00",
+      "script": {
+        "content": "一到换季，沙发比猫还毛。\n浮毛不梳掉，全家的衣服上见。\n贴着毛梳它也没躲，因为梳齿是圆角的。\n就这么梳三分钟，浮毛一层层带下来。\n湿毛能不能梳？干湿都能用，洗完澡也照梳。\n家里有掉毛怪的，收藏备用。",
+        "note": "发布失败前的终稿，账号重连后原样重发"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "沙发扶手上的浮毛特写，猫趴在旁边",
+            "voiceover": "一到换季，沙发比猫还毛。",
+            "on_screen_text": "换季掉毛",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 5,
+            "visual": "衣服粘毛、滚筒粘满毛的画面快切",
+            "voiceover": "浮毛不梳掉，全家的衣服上见。",
+            "on_screen_text": "毛会跑",
+            "role": "problem"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 4,
+            "visual": "梳子圆角梳齿的微距特写",
+            "voiceover": "贴着毛梳它也没躲，因为梳齿是圆角的。",
+            "on_screen_text": "圆角梳齿",
+            "role": "value"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 6,
+            "visual": "同机位连续梳毛，猫保持趴着不动",
+            "voiceover": "就这么梳三分钟，浮毛一层层带下来。",
+            "on_screen_text": "三分钟实梳",
+            "role": "proof"
+          },
+          {
+            "order": 5,
+            "duration_seconds": 4,
+            "visual": "洗完澡半干的毛发上再梳一次",
+            "voiceover": "湿毛能不能梳？干湿都能用，洗完澡也照梳。",
+            "on_screen_text": "干湿都能梳",
+            "role": "objection"
+          },
+          {
+            "order": 6,
+            "duration_seconds": 3,
+            "visual": "按下清毛键，毛团完整推出后定格",
+            "voiceover": "家里有掉毛怪的，收藏备用。",
+            "on_screen_text": "收藏备用",
+            "role": "cta"
+          }
+        ],
+        "note": "发布失败前的终稿，账号重连后原样重发"
+      }
+    },
+    {
+      "key": "groomer-scheduled",
+      "title": "梳满毛的梳子，一键推干净",
+      "goal": "清毛特写走解压向，已排周四晚高峰定时发布",
+      "account_ids": [
+        "account-mock-shop"
+      ],
+      "product_id": "product-groomer",
+      "state": "scheduled",
+      "created_at": "2026-07-13T09:00:00+00:00",
+      "script": {
+        "content": "梳毛一时爽，清梳头疼半天。\n这把是一键清毛的。\n按一下，整层毛直接推出来，看着就舒服。\n觉得解压就收藏一下。",
+        "note": "清毛特写第二版，动作更完整"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "梳齿上压满浮毛的特写",
+            "voiceover": "梳毛一时爽，清梳头疼半天。",
+            "on_screen_text": "梳子满了",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 3,
+            "visual": "手指移向一键清毛按键",
+            "voiceover": "这把是一键清毛的。",
+            "on_screen_text": "一键清毛",
+            "role": "value"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 8,
+            "visual": "按键按下，整层毛完整推出，慢放重看一遍",
+            "voiceover": "按一下，整层毛直接推出来，看着就舒服。",
+            "on_screen_text": "一按到底",
+            "role": "proof"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 4,
+            "visual": "毛团落进垃圾桶定格，出现收藏提示",
+            "voiceover": "觉得解压就收藏一下。",
+            "on_screen_text": "解压收藏",
+            "role": "cta"
+          }
+        ],
+        "note": "清毛特写第二版，动作更完整"
+      }
+    },
+    {
+      "key": "youtube-review",
+      "title": "这杯子拆开洗，到底麻不麻烦",
+      "goal": "教程号完整拆洗流程，正面回应清洗顾虑",
+      "account_ids": [
+        "account-youtube-howto"
+      ],
+      "product_id": "product-blender",
+      "state": "published_youtube",
+      "created_at": "2026-07-09T05:00:00+00:00",
+      "script": {
+        "content": "买之前最担心的，是不是难洗？\n它的杯体是可以拆开的。\n打完不早点洗，残渣糊在杯壁上才难受。\n拆开杯体，一件一件冲干净，顺序拍给你看。\n电机那头能碰水吗？我只用湿布擦，不冲水。\n洗着顺手才用得久，详情页可以查看拆洗说明。",
+        "note": "教程号版本，保留完整拆洗细节"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "水槽边拿着用完的榨汁杯入镜",
+            "voiceover": "买之前最担心的，是不是难洗？",
+            "on_screen_text": "难不难洗",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 3,
+            "visual": "指着杯体连接处示意可拆",
+            "voiceover": "它的杯体是可以拆开的。",
+            "on_screen_text": "杯体可拆",
+            "role": "value"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 6,
+            "visual": "杯壁上挂着果昔残渣的特写",
+            "voiceover": "打完不早点洗，残渣糊在杯壁上才难受。",
+            "on_screen_text": "残渣最烦",
+            "role": "problem"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 7,
+            "visual": "按步骤拆开杯体，逐件在水流下冲洗",
+            "voiceover": "拆开杯体，一件一件冲干净，顺序拍给你看。",
+            "on_screen_text": "逐件冲洗",
+            "role": "proof"
+          },
+          {
+            "order": 5,
+            "duration_seconds": 5,
+            "visual": "电机部分用拧干的湿布擦拭，远离水流",
+            "voiceover": "电机那头能碰水吗？我只用湿布擦，不冲水。",
+            "on_screen_text": "电机只擦",
+            "role": "objection"
+          },
+          {
+            "order": 6,
+            "duration_seconds": 4,
+            "visual": "沥干装回，杯子归位定格",
+            "voiceover": "洗着顺手才用得久，详情页可以查看拆洗说明。",
+            "on_screen_text": "看拆洗说明",
+            "role": "cta"
+          }
+        ],
+        "note": "教程号版本，保留完整拆洗细节"
+      }
+    },
+    {
+      "key": "comment-answer",
+      "title": "一次充电能用几次？不瞎编",
+      "goal": "回应高频追问；只讲资料里写了的，不编续航数字；等回流数据",
+      "account_ids": [
+        "account-mock-shop"
+      ],
+      "product_id": "product-blender",
+      "state": "published_wait",
+      "created_at": "2026-07-12T10:00:00+00:00",
+      "script": {
+        "content": "问得最多的就是，一次充电能用几次。\n官方资料只写了 USB-C 充电这一条。\n能用几次，得看你打什么、打多久，我不替它编数。\n能确认的是充电口，USB-C，手机线就能充。\n对续航较真的，去详情页查看再问客服。",
+        "note": "评论回应口径，只用已有资料"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "手机上的追问弹幕虚化入镜，不露具体账号",
+            "voiceover": "问得最多的就是，一次充电能用几次。",
+            "on_screen_text": "充电续航",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 4,
+            "visual": "商品资料页特写，USB-C 充电一栏高亮",
+            "voiceover": "官方资料只写了 USB-C 充电这一条。",
+            "on_screen_text": "资料只有这条",
+            "role": "value"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 6,
+            "visual": "不同食材和打制时长的画面快切",
+            "voiceover": "能用几次，得看你打什么、打多久，我不替它编数。",
+            "on_screen_text": "不编数字",
+            "role": "problem"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 5,
+            "visual": "USB-C 线插入杯身充电口特写",
+            "voiceover": "能确认的是充电口，USB-C，手机线就能充。",
+            "on_screen_text": "USB-C 充电",
+            "role": "proof"
+          },
+          {
+            "order": 5,
+            "duration_seconds": 4,
+            "visual": "杯子和数据线并排定格",
+            "voiceover": "对续航较真的，去详情页查看再问客服。",
+            "on_screen_text": "详情页见",
+            "role": "cta"
+          }
+        ],
+        "note": "评论回应口径，只用已有资料"
+      }
+    },
+    {
+      "key": "account-context",
+      "title": "地铁里拎着冰美式，到底会不会洒",
+      "goal": "真人通勤实测，开头先给摇晃和倒置的结果；脚本还在写",
+      "account_ids": [
+        "account-youtube-main"
+      ],
+      "state": "needs_script",
+      "created_at": "2026-07-14T01:00:00+00:00"
+    },
+    {
+      "key": "multi-account",
+      "title": "下班前一分钟，把桌面清空",
+      "goal": "同一条成片投教程号和短视频号，对比两边受众的完播和评论",
+      "account_ids": [
+        "account-mock-shop",
+        "account-youtube-main"
+      ],
+      "product_id": "product-organizer",
+      "state": "published_multi",
+      "created_at": "2026-07-11T02:00:00+00:00",
+      "script": {
+        "content": "下班前的桌面，还能看吗？\n一个盒子，线和排插全部下桌。\n排插进盒，两边出线，走线一下就顺了。\n手机往上盖一放，充着电就下班。\n想抄作业的，收藏这一条。",
+        "note": "双账号同素材分发版"
+      },
+      "storyboard": {
+        "shots": [
+          {
+            "order": 1,
+            "duration_seconds": 3,
+            "visual": "下班时间的办公桌原样入镜",
+            "voiceover": "下班前的桌面，还能看吗？",
+            "on_screen_text": "下班前一分钟",
+            "role": "hook"
+          },
+          {
+            "order": 2,
+            "duration_seconds": 4,
+            "visual": "收纳盒摆上桌，掀盖展示内部空间",
+            "voiceover": "一个盒子，线和排插全部下桌。",
+            "on_screen_text": "全部下桌",
+            "role": "value"
+          },
+          {
+            "order": 3,
+            "duration_seconds": 6,
+            "visual": "插线板放进盒中，两侧出线口引出键盘和屏幕线",
+            "voiceover": "排插进盒，两边出线，走线一下就顺了。",
+            "on_screen_text": "两侧出线",
+            "role": "proof"
+          },
+          {
+            "order": 4,
+            "duration_seconds": 6,
+            "visual": "合盖后手机放上盖充电，镜头拉远看整桌",
+            "voiceover": "手机往上盖一放，充着电就下班。",
+            "on_screen_text": "上盖充电位",
+            "role": "proof"
+          },
+          {
+            "order": 5,
+            "duration_seconds": 4,
+            "visual": "清爽桌面定格，出现收藏提示",
+            "voiceover": "想抄作业的，收藏这一条。",
+            "on_screen_text": "收藏抄作业",
+            "role": "cta"
+          }
+        ],
+        "note": "双账号同素材分发版"
+      }
+    },
+    {
+      "key": "import-script",
+      "title": "下午三点，工位上现打一杯",
+      "goal": "导入的现成脚本先用办公室场景试水；等实拍素材",
+      "account_ids": [],
+      "product_id": "product-blender",
+      "state": "needs_media",
+      "created_at": "2026-07-14T02:00:00+00:00"
+    }
+  ],
+  "batches": [
+    {
+      "id": "batch-hero",
+      "name": "榨汁杯高表现视频第一轮裂变",
+      "note": "hero 播放冲到 18.6 万后开的裂变批：一条换场景，一条改钩子，各测一遍。",
+      "created_at": "2026-07-13T02:55:00+00:00"
+    }
+  ]
+}
